@@ -4,16 +4,8 @@ function M.setup(opts)
 	local config = require('dmcodium.nvim.config')
 	config.setup(opts)
 
-	-- Adding .dm, .dme and .dmm as DM language files
-	vim.filetype.add({
-		extension = {
-			dm = "dm",
-			dme = "dm",
-		}
-	})
-
 	-- DreamMaker parser
-	-- Register parser for .dm and .dme files
+	-- Register parser for DM language-related filetypes
 	vim.treesitter.language.register('dm', { 'dm', 'dme' })
 
 	-- Add highlighting for DreamMaker files
