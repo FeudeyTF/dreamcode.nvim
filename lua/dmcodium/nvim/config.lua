@@ -9,7 +9,12 @@ local config = {
 		generate_from_json = true,
 		queries = 'queries/neovim',
 	},
-	language_server_dm_path = ""
+	language_server_dm_info = {
+		cmd = { 'dm-langserver' },
+		filetypes = { 'dm' },
+		root_markers = { 'SpacemanDMM.toml', '.git' },
+		settings = {},
+	}
 }
 
 function M.setup(user_data)
