@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(opts)
-	local config = require('dmcodium.nvim.config')
+	local config = require('dreamcode.nvim.config')
 	config.setup(opts)
 
 	vim.filetype.add({
