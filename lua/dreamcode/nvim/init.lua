@@ -1,26 +1,19 @@
 local M = {}
 
-local function register_filetypes()
-	vim.filetype.add({
-		extension = {
-			dm = 'dm',
-			dme = 'dm',
-			dmm = 'dm',
-		},
-	})
-end
-
-register_filetypes()
-
 function M.setup(opts)
 	local config = require('dmcodium.nvim.config')
 	config.setup(opts)
 
-	register_filetypes()
+	vim.filetype.add({
+		extension = {
+			dm = 'dm',
+			dme = 'dm',
+		},
+	})
 
 	-- DreamMaker parser
 	-- Register parser for DM language-related filetypes
-	vim.treesitter.language.register('dm', { 'dm', 'dme', 'dmm' })
+	vim.treesitter.language.register('dm', { 'dm', 'dme' })
 
 	-- Add highlighting for DreamMaker files
 	vim.api.nvim_create_autocmd('FileType', {
@@ -39,9 +32,9 @@ function M.setup(opts)
 
 	require('nvim-treesitter.install').install({ 'dm' }, true)
 
-	vim.lsp.config('dm', config.get_language_server_info())
+	vim.lsp.config({ 'dm' }, config.get_language_server_info())
 
-	vim.lsp.enable("dm")
+	vim.lsp.enable({ "dm" })
 end
 
 function M.update()
