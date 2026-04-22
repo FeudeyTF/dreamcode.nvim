@@ -32,7 +32,7 @@ function M.setup(opts)
 
 	require('nvim-treesitter.install').install({ 'dm' }, true)
 
-	vim.lsp.config({ 'dm' }, config.get_language_server_info())
+	vim.lsp.config('dm', config.get_language_server_info())
 
 	vim.lsp.enable({ "dm" })
 end
